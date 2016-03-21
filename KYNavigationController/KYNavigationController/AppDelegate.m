@@ -65,15 +65,19 @@
     }
     _mainTabBarController = [[UITabBarController alloc]init];
     
-    HomeViewController *home = [[HomeViewController alloc]init];
+    static  NSString *storyboardName =@"Main";//无后缀.storyboard
+    UIStoryboard *storyboard = [UIStoryboard  storyboardWithName:storyboardName  bundle:nil];
+    
+    HomeViewController *home = [storyboard instantiateViewControllerWithIdentifier:@"HomeViewController"];
     DiscoverViewController *discover = [[DiscoverViewController alloc]init];
-    MessageViewController *message = [[MessageViewController alloc]init];
+    MessageViewController *message = [storyboard instantiateViewControllerWithIdentifier:@"MessageViewController"];;
     
     [_mainTabBarController setViewControllers:@[[[KYNavigationViewController alloc]initWithRootViewController:home],[[KYNavigationViewController alloc]initWithRootViewController:discover],[[KYNavigationViewController alloc]initWithRootViewController:message]]];
     
-    UIView *tabBgView = [[UIView alloc] initWithFrame:_mainTabBarController.tabBar.bounds];
-    tabBgView.backgroundColor = [UIColor blackColor];
-    [_mainTabBarController.tabBar insertSubview:tabBgView atIndex:0];
+    //修改TabbarController.tabBar的背景颜色
+//    UIView *tabBgView = [[UIView alloc] initWithFrame:_mainTabBarController.tabBar.bounds];
+//    tabBgView.backgroundColor = [UIColor greenColor];
+//    [_mainTabBarController.tabBar insertSubview:tabBgView atIndex:0];
     
     return _mainTabBarController;
 }

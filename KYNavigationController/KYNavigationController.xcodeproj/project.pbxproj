@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		320D3F491C9D38AF00609013 /* HomeSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 320D3F481C9D38AF00609013 /* HomeSubViewController.m */; };
 		328B7EF31C9C00A40059A360 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B7EF21C9C00A40059A360 /* main.m */; };
 		328B7EF61C9C00A40059A360 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B7EF51C9C00A40059A360 /* AppDelegate.m */; };
 		328B7EFC1C9C00A40059A360 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 328B7EFA1C9C00A40059A360 /* Main.storyboard */; };
@@ -16,9 +17,13 @@
 		328B7F0D1C9C01580059A360 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B7F0C1C9C01580059A360 /* HomeViewController.m */; };
 		328B7F131C9C02250059A360 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B7F121C9C02250059A360 /* MessageViewController.m */; };
 		328B7F161C9C02DA0059A360 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B7F151C9C02DA0059A360 /* DiscoverViewController.m */; };
+		32C0E7761C9FEE3700EF119D /* MessageSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C0E7751C9FEE3700EF119D /* MessageSubViewController.m */; };
+		32F5C2D01C9FC97B00E4072A /* LeftBarUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F5C2CF1C9FC97B00E4072A /* LeftBarUIViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		320D3F471C9D38AF00609013 /* HomeSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSubViewController.h; sourceTree = "<group>"; };
+		320D3F481C9D38AF00609013 /* HomeSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSubViewController.m; sourceTree = "<group>"; };
 		328B7EEE1C9C00A40059A360 /* KYNavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KYNavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		328B7EF21C9C00A40059A360 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		328B7EF41C9C00A40059A360 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -35,6 +40,10 @@
 		328B7F121C9C02250059A360 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		328B7F141C9C02DA0059A360 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		328B7F151C9C02DA0059A360 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		32C0E7741C9FEE3700EF119D /* MessageSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageSubViewController.h; sourceTree = "<group>"; };
+		32C0E7751C9FEE3700EF119D /* MessageSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageSubViewController.m; sourceTree = "<group>"; };
+		32F5C2CE1C9FC97B00E4072A /* LeftBarUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftBarUIViewController.h; sourceTree = "<group>"; };
+		32F5C2CF1C9FC97B00E4072A /* LeftBarUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftBarUIViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,10 +80,16 @@
 				328B7EF51C9C00A40059A360 /* AppDelegate.m */,
 				328B7F0B1C9C01580059A360 /* HomeViewController.h */,
 				328B7F0C1C9C01580059A360 /* HomeViewController.m */,
+				320D3F471C9D38AF00609013 /* HomeSubViewController.h */,
+				320D3F481C9D38AF00609013 /* HomeSubViewController.m */,
+				32F5C2CE1C9FC97B00E4072A /* LeftBarUIViewController.h */,
+				32F5C2CF1C9FC97B00E4072A /* LeftBarUIViewController.m */,
 				328B7F141C9C02DA0059A360 /* DiscoverViewController.h */,
 				328B7F151C9C02DA0059A360 /* DiscoverViewController.m */,
 				328B7F111C9C02250059A360 /* MessageViewController.h */,
 				328B7F121C9C02250059A360 /* MessageViewController.m */,
+				32C0E7741C9FEE3700EF119D /* MessageSubViewController.h */,
+				32C0E7751C9FEE3700EF119D /* MessageSubViewController.m */,
 				328B7F081C9C00CE0059A360 /* KYNavigationViewController.h */,
 				328B7F091C9C00CE0059A360 /* KYNavigationViewController.m */,
 				328B7EFA1C9C00A40059A360 /* Main.storyboard */,
@@ -165,8 +180,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				328B7F131C9C02250059A360 /* MessageViewController.m in Sources */,
+				32F5C2D01C9FC97B00E4072A /* LeftBarUIViewController.m in Sources */,
+				320D3F491C9D38AF00609013 /* HomeSubViewController.m in Sources */,
 				328B7F161C9C02DA0059A360 /* DiscoverViewController.m in Sources */,
 				328B7EF61C9C00A40059A360 /* AppDelegate.m in Sources */,
+				32C0E7761C9FEE3700EF119D /* MessageSubViewController.m in Sources */,
 				328B7F0A1C9C00CE0059A360 /* KYNavigationViewController.m in Sources */,
 				328B7F0D1C9C01580059A360 /* HomeViewController.m in Sources */,
 				328B7EF31C9C00A40059A360 /* main.m in Sources */,
@@ -282,6 +300,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KYNavigationController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KY.KYNavigationController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -293,6 +312,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = KYNavigationController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KY.KYNavigationController;
 				PRODUCT_NAME = "$(TARGET_NAME)";

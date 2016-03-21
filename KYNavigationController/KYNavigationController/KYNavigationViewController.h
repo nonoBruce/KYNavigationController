@@ -11,6 +11,15 @@
 #import "DiscoverViewController.h"
 #import "MessageViewController.h"
 
+typedef NS_ENUM(NSInteger, KYBarButtonType) {
+    KYBarButtonType_Common = 1,
+};
+
 @interface KYNavigationViewController : UINavigationController
+
+- (UITabBarItem *)barButtonItem:(KYBarButtonType )type;
+
+
+- (NSArray *)barButtonItems:(KYBarButtonType )type;
 
 @end

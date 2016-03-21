@@ -32,10 +32,14 @@
     // Do any additional setup after loading the view.
     [self setupNavStyle];
     // Do any additional setup after loading the view.
+    
+    [self setNavigationBack];
 }
 
 
 -(instancetype)initWithRootViewController:(UIViewController *)rootViewController {
+
+    
     self = [super initWithRootViewController:rootViewController];
     
     if (self) {
@@ -44,7 +48,7 @@
         UIImage *selectedImage = nil;
         
         if ([rootViewController isKindOfClass:[HomeViewController class]]) {
-            title         = @"Home";
+            title         = @"消息";
             image         = [UIImage imageNamed:@"tab_recent_nor"];
             selectedImage = [UIImage imageNamed:@"tab_recent_press"];
             
@@ -59,13 +63,17 @@
             selectedImage = [UIImage imageNamed:@"tab_qworld_press"];
             
         }
+//        [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        selectedImage = [selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+        
 //        UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:title image:image tag:0];
         //iOS7 and Later
         UITabBarItem *item = [[UITabBarItem alloc]initWithTitle:title image:image selectedImage:selectedImage];
         
         //---改变UITabBarItem的字体和颜色
         NSDictionary *AttributeNormalDic = [NSDictionary dictionaryWithObjectsAndKeys:
-                                      [UIColor whiteColor], NSForegroundColorAttributeName,
+                                      [UIColor grayColor], NSForegroundColorAttributeName,
                                       [UIFont fontWithName:@"Helvetica" size:10.0f], NSFontAttributeName,
                                             nil];
         [[UITabBarItem appearance] setTitleTextAttributes:AttributeNormalDic forState:UIControlStateNormal];
@@ -91,8 +99,7 @@
 }
 
 
--(void)setupNavStyle
-{
+- (void)setupNavStyle {
     UIColor *BkColor = KYBkColorNavigaion;
     if (KYSysCurrentVersion < 7.0f) {
         [self.navigationBar setBackgroundImage:[[KYNavigationViewController CreateImageWithColor:BkColor] resizableImageWithCapInsets:UIEdgeInsetsMake(1, 1, 1, 1)] forBarMetrics:UIBarMetricsDefault];
@@ -127,5 +134,39 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+//修改返回图标的图片，在这边修改可以直接保留手势返回
+//注意图片要正方形，不然会偏移，不居中
+- (void)setNavigationBack{
+    
+    UINavigationBar * navigationBar = [UINavigationBar appearance];
+    
+    //返回按钮的箭头颜色
+//    [navigationBar setTintColor:[UIColor greenColor]];
+    
+    //设置返回样式图片
+    
+    UIImage *image = [UIImage imageNamed:@"back_nor"];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+
+//    iOS7之后如果要定制这个返回图片，需要下面2个值都设置
+//    Note: These properties must both be set if you want to customize the back indicator image.
+    navigationBar.backIndicatorImage = image;
+    navigationBar.backIndicatorTransitionMaskImage = image;
+    
+}
+
+#pragma mark - 返回item
+- (UITabBarItem *)barButtonItem:(KYBarButtonType )type {
+    
+    return nil;
+}
+
+
+- (NSArray *)barButtonItems:(KYBarButtonType )type {
+    
+    return nil;
+}
 
 @end
