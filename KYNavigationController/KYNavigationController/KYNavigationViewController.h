@@ -12,13 +12,13 @@
 #import "MessageViewController.h"
 
 typedef NS_ENUM(NSInteger, KYBarButtonType) {
-    KYBarButtonType_Common = 1,
+    KYBarButtonType_NULL = 0,//默认只有返回的
 };
 
 @interface KYNavigationViewController : UINavigationController
 
-- (UITabBarItem *)barButtonItem:(KYBarButtonType )type;
 
+- (UITabBarItem *)barButtonItem:(KYBarButtonType )type;
 
 - (NSArray *)barButtonItems:(KYBarButtonType )type;
 

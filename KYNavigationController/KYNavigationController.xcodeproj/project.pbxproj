@@ -18,6 +18,7 @@
 		328B7F131C9C02250059A360 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B7F121C9C02250059A360 /* MessageViewController.m */; };
 		328B7F161C9C02DA0059A360 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 328B7F151C9C02DA0059A360 /* DiscoverViewController.m */; };
 		32C0E7761C9FEE3700EF119D /* MessageSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C0E7751C9FEE3700EF119D /* MessageSubViewController.m */; };
+		32C0E7791C9FF3BB00EF119D /* MessageDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C0E7781C9FF3BB00EF119D /* MessageDetailViewController.m */; };
 		32F5C2D01C9FC97B00E4072A /* LeftBarUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F5C2CF1C9FC97B00E4072A /* LeftBarUIViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,8 @@
 		328B7F151C9C02DA0059A360 /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		32C0E7741C9FEE3700EF119D /* MessageSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageSubViewController.h; sourceTree = "<group>"; };
 		32C0E7751C9FEE3700EF119D /* MessageSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageSubViewController.m; sourceTree = "<group>"; };
+		32C0E7771C9FF3BB00EF119D /* MessageDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageDetailViewController.h; sourceTree = "<group>"; };
+		32C0E7781C9FF3BB00EF119D /* MessageDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageDetailViewController.m; sourceTree = "<group>"; };
 		32F5C2CE1C9FC97B00E4072A /* LeftBarUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftBarUIViewController.h; sourceTree = "<group>"; };
 		32F5C2CF1C9FC97B00E4072A /* LeftBarUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftBarUIViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +93,8 @@
 				328B7F121C9C02250059A360 /* MessageViewController.m */,
 				32C0E7741C9FEE3700EF119D /* MessageSubViewController.h */,
 				32C0E7751C9FEE3700EF119D /* MessageSubViewController.m */,
+				32C0E7771C9FF3BB00EF119D /* MessageDetailViewController.h */,
+				32C0E7781C9FF3BB00EF119D /* MessageDetailViewController.m */,
 				328B7F081C9C00CE0059A360 /* KYNavigationViewController.h */,
 				328B7F091C9C00CE0059A360 /* KYNavigationViewController.m */,
 				328B7EFA1C9C00A40059A360 /* Main.storyboard */,
@@ -182,6 +187,7 @@
 				328B7F131C9C02250059A360 /* MessageViewController.m in Sources */,
 				32F5C2D01C9FC97B00E4072A /* LeftBarUIViewController.m in Sources */,
 				320D3F491C9D38AF00609013 /* HomeSubViewController.m in Sources */,
+				32C0E7791C9FF3BB00EF119D /* MessageDetailViewController.m in Sources */,
 				328B7F161C9C02DA0059A360 /* DiscoverViewController.m in Sources */,
 				328B7EF61C9C00A40059A360 /* AppDelegate.m in Sources */,
 				32C0E7761C9FEE3700EF119D /* MessageSubViewController.m in Sources */,

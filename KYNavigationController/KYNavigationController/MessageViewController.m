@@ -24,9 +24,9 @@
     self.title = @"Message";
 
     self.dataArray = [[NSMutableArray alloc] initWithObjects:
-                      @"自定义leftBarButtonItems",
-                      @"右边按钮",
-                      @"右边按钮间距设置",
+                      @"右滑返回失效",
+                      @"右滑返回失效--处理",
+                      @"2",
                       @"3",@"4",@"5",@"6",@"7",@"8",@"9", nil];
 }
 
@@ -89,7 +89,12 @@
 //    }else {
         viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MessageSubViewController"];
         
-//    }
+//
+    if(indexPath.row == 1) {
+        
+        viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"MessageDetailViewController"];
+    }
+
     
     if(viewController){
         viewController.hidesBottomBarWhenPushed = YES;

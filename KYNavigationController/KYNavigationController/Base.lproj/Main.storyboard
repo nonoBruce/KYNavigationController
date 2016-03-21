@@ -79,6 +79,24 @@
             </objects>
             <point key="canvasLocation" x="1121" y="1016"/>
         </scene>
+        <!--Message Detail View Controller-->
+        <scene sceneID="raq-lK-85g">
+            <objects>
+                <viewController storyboardIdentifier="MessageDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pg4-d6-vGR" customClass="MessageDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rkD-U2-lmN"/>
+                        <viewControllerLayoutGuide type="bottom" id="vkp-t4-8Ig"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HPh-gf-0qT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xoG-Ef-qzN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="392" y="1762"/>
+        </scene>
         <!--Message Sub View Controller-->
         <scene sceneID="E4a-22-PKs">
             <objects>

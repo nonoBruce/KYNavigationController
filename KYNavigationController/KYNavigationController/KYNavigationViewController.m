@@ -12,7 +12,9 @@
 #define KYBkColorNavigaion          ([UIColor colorWithRed:0.204 green:0.722 blue:0.918 alpha:1])
 
 
-@interface KYNavigationViewController ()
+@interface KYNavigationViewController ()<UINavigationControllerDelegate,UIGestureRecognizerDelegate>
+
+@property(nonatomic, weak) UIViewController *currentShowVC;
 
 @end
 
@@ -33,7 +35,8 @@
     [self setupNavStyle];
     // Do any additional setup after loading the view.
     
-    [self setNavigationBack];
+    [self setNavigationBack];//这个只修改返回图片
+//    [self setNavigationBack1];//只含有图片的
 }
 
 
@@ -41,6 +44,11 @@
 
     
     self = [super initWithRootViewController:rootViewController];
+    
+    //手势操作-- start
+    self.interactivePopGestureRecognizer.delegate = self;
+    self.delegate = self;
+    //手势操作-- end
     
     if (self) {
         NSString *title         = nil;
@@ -157,6 +165,44 @@
     
 }
 
+//设置只有图片
+- (void)setNavigationBack1 {
+    UINavigationBar * navigationBar = [UINavigationBar appearance];
+    
+    //返回按钮的箭头颜色
+    //    [navigationBar setTintColor:[UIColor greenColor]];
+    
+    //设置返回样式图片
+    
+    UIImage *image = [UIImage imageNamed:@"leftBackButton"];
+    image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    
+    //    iOS7之后如果要定制这个返回图片，需要下面2个值都设置
+    //    Note: These properties must both be set if you want to customize the back indicator image.
+    navigationBar.backIndicatorImage = image;
+    navigationBar.backIndicatorTransitionMaskImage = image;
+    
+    //把标题移到看不到的地方，
+    UIBarButtonItem *buttonItem = [UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil];
+    UIOffset offset;
+    offset.horizontal = - 100;
+    offset.vertical =  - 100;
+    [buttonItem setBackButtonTitlePositionAdjustment:offset forBarMetrics:UIBarMetricsDefault];
+
+}
+
+- (void)setNavigationBack2 {
+    UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    backButton.frame = CGRectMake(0, 0, 60, 40);
+    backButton.backgroundColor = [UIColor redColor];
+    [backButton setImage:[UIImage imageNamed:@"leftBackButton"] forState:UIControlStateNormal];
+    //对按钮的个性化设定
+    
+    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+//    self.navigationItem.leftBarButtonItem = barItem; //侧滑手势失效
+    self.navigationItem.backBarButtonItem = barItem; //不影响侧滑手势
+}
+
 #pragma mark - 返回item
 - (UITabBarItem *)barButtonItem:(KYBarButtonType )type {
     
@@ -169,4 +215,52 @@
     return nil;
 }
 
+
+//参考地址：http://www.jianshu.com/p/e7c5e2400935
+#pragma mark - UIGestureRecognizerDelegate
+//这个方法在视图控制器完成push的时候调用
+-(void)navigationController:(UINavigationController *)navigationController didShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    if (navigationController.viewControllers.count == 1){
+        //如果堆栈内的视图控制器数量为1 说明只有根控制器，将currentShowVC 清空，为了下面的方法禁用侧滑手势
+        self.currentShowVC = Nil;
+    }
+    else{
+        //将push进来的视图控制器赋值给currentShowVC
+        self.currentShowVC = viewController;
+    }
+}
+//这个方法是在手势将要激活前调用：返回YES允许侧滑手势的激活，返回NO不允许侧滑手势的激活
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    //首先在这确定是不是我们需要管理的侧滑返回手势
+    if (gestureRecognizer == self.interactivePopGestureRecognizer) {
+        if (self.currentShowVC == self.topViewController) {
+            //如果 currentShowVC 存在说明堆栈内的控制器数量大于 1 ，允许激活侧滑手势
+            return YES;
+        }
+        //如果 currentShowVC 不存在，禁用侧滑手势。如果在根控制器中不禁用侧滑手势，而且不小心触发了侧滑手势，会导致存放控制器的堆栈混乱，直接的效果就是你发现你的应用假死了，点哪都没反应，感兴趣是神马效果的朋友可以自己试试 = =。
+        return NO;
+    }
+    
+    //这里就是非侧滑手势调用的方法啦，统一允许激活
+    return YES;
+}
+
+
+////获取侧滑返回手势
+//- (UIScreenEdgePanGestureRecognizer *)screenEdgePanGestureRecognizer
+//{
+//    UIScreenEdgePanGestureRecognizer *screenEdgePanGestureRecognizer = nil;
+//    if (self.view.gestureRecognizers.count > 0)
+//    {
+//        for (UIGestureRecognizer *recognizer in self.view.gestureRecognizers)
+//        {
+//            if ([recognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]])
+//            {
+//                screenEdgePanGestureRecognizer = (UIScreenEdgePanGestureRecognizer *)recognizer;
+//                break;
+//            }
+//        }
+//    }
+//    return screenEdgePanGestureRecognizer;
+//}
 @end
