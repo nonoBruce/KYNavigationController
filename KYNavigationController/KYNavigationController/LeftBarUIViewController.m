@@ -7,7 +7,7 @@
 //
 
 #import "LeftBarUIViewController.h"
-
+#import "KYNavigationViewController.h"
 @implementation LeftBarUIViewController
 
 - (void)dealloc {
@@ -17,20 +17,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    self.title = @"定制左边左边左边左边左边左边左边的BarButton";
+    self.title = @"定制左边";
 
+    KYNavigationViewController *nav = (KYNavigationViewController *)self.navigationController;
+    NSArray *array = [[NSArray alloc] initWithObjects:
+                      [NSNumber numberWithInteger:KYBarButtonType_User],
+                      [NSNumber numberWithInteger:KYBarButtonType_Call],nil];
+    self.navigationItem.rightBarButtonItems = [nav barButtonItems:array andBarButtonBlock:^(UIBarButtonItem *item) {
+        switch (item.tag) {
+            case KYBarButtonType_User:{
+                NSLog(@"KYBarButtonType_Clear click");
+                break;
+            }
+            case KYBarButtonType_Call:{
+                NSLog(@"KYBarButtonType_Save click");
+                break;
+            }
+            default:
+                break;
+        }
+    }];
     
-//    UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(00, 10, 60,  30)];
-//    
-//    [rightButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [rightButton setBackgroundImage:[UIImage imageNamed:@"header_leftbtn_nor"] forState:UIControlStateNormal];
-//    
-////    [rightButton setTitle:@"退出" forState:UIControlStateNormal];
-//    
-//    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc]initWithCustomView:rightButton];
-//    
-//    self.navigationItem.leftBarButtonItem = leftBarButton;
 }
 
 - (void)backAction:(UITabBarItem *)item {

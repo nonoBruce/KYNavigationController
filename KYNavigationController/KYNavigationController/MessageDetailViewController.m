@@ -11,6 +11,7 @@
 //
 //
 #import "MessageDetailViewController.h"
+#import "KYNavigationViewController.h"
 
 @implementation MessageDetailViewController
 
@@ -21,25 +22,19 @@
     self.title = @"MessageDetail";
     
     
-    //定制了一个返回按钮
-    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(0, 0, 65, 40);
-    [backBtn setImage:[UIImage imageNamed:@"back_nor"] forState:UIControlStateNormal];
-//    [backBtn setImage:[UIImage imageNamed:@"back_nor"] forState:UIControlStateSelected];
-    [backBtn setTitle:@"返回" forState:UIControlStateNormal];
-    [backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 6, 0, 0)];//稍微调整下文字图片间距
-//    backBtn.imageView.backgroundColor = [UIColor redColor];
-    
-    [backBtn addTarget:self action:@selector(leftItemAction:) forControlEvents:UIControlEventTouchUpInside];
-//    [backBtn setBackgroundColor:[UIColor greenColor]];
-    
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
-                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                       target:nil action:nil];
-    negativeSpacer.width = -15;
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
-    
-    self.navigationItem.leftBarButtonItems = [[NSArray alloc] initWithObjects:negativeSpacer, leftItem, nil];
+    KYNavigationViewController *nav = (KYNavigationViewController *)self.navigationController;
+    NSArray *array = [[NSArray alloc] initWithObjects:
+                      [NSNumber numberWithInteger:KYBarButtonType_Back],nil];
+    self.navigationItem.rightBarButtonItems = [nav barButtonItems:array andBarButtonBlock:^(UIBarButtonItem *item) {
+        switch (item.tag) {
+            case KYBarButtonType_Back:{
+                NSLog(@"KYBarButtonType_Back click");
+                break;
+            }
+            default:
+                break;
+        }
+    }];
     
 }
 

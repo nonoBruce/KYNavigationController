@@ -203,19 +203,6 @@
     self.navigationItem.backBarButtonItem = barItem; //不影响侧滑手势
 }
 
-#pragma mark - 返回item
-- (UITabBarItem *)barButtonItem:(KYBarButtonType )type {
-    
-    return nil;
-}
-
-
-- (NSArray *)barButtonItems:(KYBarButtonType )type {
-    
-    return nil;
-}
-
-
 //参考地址：http://www.jianshu.com/p/e7c5e2400935
 #pragma mark - UIGestureRecognizerDelegate
 //这个方法在视图控制器完成push的时候调用
@@ -246,21 +233,128 @@
 }
 
 
-////获取侧滑返回手势
-//- (UIScreenEdgePanGestureRecognizer *)screenEdgePanGestureRecognizer
-//{
-//    UIScreenEdgePanGestureRecognizer *screenEdgePanGestureRecognizer = nil;
-//    if (self.view.gestureRecognizers.count > 0)
-//    {
-//        for (UIGestureRecognizer *recognizer in self.view.gestureRecognizers)
-//        {
-//            if ([recognizer isKindOfClass:[UIScreenEdgePanGestureRecognizer class]])
-//            {
-//                screenEdgePanGestureRecognizer = (UIScreenEdgePanGestureRecognizer *)recognizer;
-//                break;
-//            }
-//        }
-//    }
-//    return screenEdgePanGestureRecognizer;
-//}
+#pragma mark - 返回item
+- (UIBarButtonItem *)barButtonItem:(KYBarButtonType )type {
+    
+    return nil;
+}
+
+
+- (NSArray *)barButtonItems:(NSArray *)types andBarButtonBlock:(KYBarButtonBlock)block {
+    self.barButtonBlock = block;
+    
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSNumber *number in types) {
+        switch (number.intValue) {
+            case KYBarButtonType_Clear:{
+                [array addObject:[self clearItem]];
+                break;
+            }
+            case KYBarButtonType_Save:{
+                [array addObject:[self saveItem]];
+                break;
+            }
+            case KYBarButtonType_Call:{
+//                [array addObject:[self itemSpacer]];
+                [array addObject:[self callItem]];
+                break;
+            }
+            case KYBarButtonType_User:{
+//                [array addObject:[self itemSpacer]];
+                [array addObject:[self messageItem]];
+                break;
+            }
+            default:
+                break;
+        }
+        
+    }
+    return array;
+}
+
+
+#pragma mark - private
+
+- (UIBarButtonItem *)backItem {
+    //定制了一个返回按钮
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 0, 65, 40);
+    [backBtn setImage:[UIImage imageNamed:@"back_nor"] forState:UIControlStateNormal];
+    //    [backBtn setImage:[UIImage imageNamed:@"back_nor"] forState:UIControlStateSelected];
+    [backBtn setTitle:@"返回" forState:UIControlStateNormal];
+    [backBtn setImageEdgeInsets:UIEdgeInsetsMake(0, 6, 0, 0)];//稍微调整下文字图片间距
+    //    backBtn.imageView.backgroundColor = [UIColor redColor];
+    
+    [backBtn addTarget:self action:@selector(itemAction:) forControlEvents:UIControlEventTouchUpInside];
+    //    [backBtn setBackgroundColor:[UIColor greenColor]];
+    
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    negativeSpacer.width = -15;
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    leftItem.tag = KYBarButtonType_Back;
+    return leftItem;
+    
+//    self.navigationItem.leftBarButtonItems = [[NSArray alloc] initWithObjects:negativeSpacer, leftItem, nil];
+    
+}
+- (UIBarButtonItem *)clearItem {
+    UIBarButtonItem *cleanButton = [[UIBarButtonItem alloc] initWithTitle:@"清空"
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self
+                                                                   action:@selector(itemAction:)];
+    cleanButton.tag = KYBarButtonType_Clear;
+    
+    return cleanButton;
+}
+
+- (UIBarButtonItem *)saveItem {
+    UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"保存"
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self
+                                                                   action:@selector(itemAction:)];
+    saveButton.tag = KYBarButtonType_Save;
+    
+    return saveButton;
+}
+
+//如果是图片默认加上间距，以缩小间距
+- (UIBarButtonItem *)messageItem {
+    
+    UIBarButtonItem *messageButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"header_icon_single"]
+                                                        landscapeImagePhone:[UIImage imageNamed:@"header_icon_single_pressed"]
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self action:@selector(itemAction:)];
+    
+    messageButton.tag = KYBarButtonType_User;
+    
+    return messageButton;
+}
+
+- (UIBarButtonItem *)callItem {
+    
+    UIBarButtonItem *callButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"aio_head_twocall"]
+                                                        landscapeImagePhone:[UIImage imageNamed:@"aio_head_twocall_pressed"]
+                                                                      style:UIBarButtonItemStylePlain
+                                                                     target:self action:@selector(itemAction:)];
+    callButton.tag = KYBarButtonType_Call;
+    return callButton;
+}
+
+#pragma mark - 间距
+- (UIBarButtonItem *)itemSpacer {
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    negativeSpacer.width = -15;
+    return negativeSpacer;
+}
+#pragma mark - itemAction
+
+- (void)itemAction:(UIBarButtonItem *)item {
+    self.barButtonBlock(item);
+    NSLog(@"item tag = %zd",item.tag);
+}
+
 @end
